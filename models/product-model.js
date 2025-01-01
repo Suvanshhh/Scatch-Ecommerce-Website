@@ -39,7 +39,8 @@ const productSchema = new mongoose.Schema({
   // seller: { type: mongoose.Schema.Types.ObjectId, ref: 'Seller' },   // Assuming Seller is another model
   // sellerid: { type: String },              // Added sellerid
   // productid: { type: String },             // Added productid
-  bgcolor: { type: String },               // Added bgcolor
+  bgcolor: { type: String },       
+  image: { type: Buffer },        // Added bgcolor
   panelcolor: { type: String },            // Added panelcolor
   textcolor: { type: String }              // Added textcolor
 });
