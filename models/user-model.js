@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String },
     cart: { type: Array , default: []},
-    isadmin: { type: Boolean},
     orders: { type: Array , default: [] },
     contact: { type: Number },
     picture: { type: String }

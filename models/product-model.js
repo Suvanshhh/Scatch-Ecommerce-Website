@@ -26,23 +26,22 @@ mongoose.connect("mongodb://127.0.0.1:27017/scatch")
     console.error("MongoDB connection error:", err);
   });
 
-// Define the user schema
+// Define the product schema
 const productSchema = new mongoose.Schema({
-    image: String,
-    price: Number,
-    discount: {Number, default: 0},
-    name: String,
-    description: String,
-    quantity: Number,
-    category: String,
-    rating: Number,
-    // reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
-    // seller: { type: mongoose.Schema.Types.ObjectId, ref: 'Seller' },
-    // sellerid: String,
-    // productid: String,
-    bgcolor: String,
-    panelcolor: String,
-    textcolor: String
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
+  discount: { type: Number, default: 0 },  // Correct default definition for discount
+  // description: { type: String },           // Uncommented and defined description
+  // quantity: { type: Number, default: 0 },  // Added quantity with default value
+  // category: { type: String },              // Added category
+  // rating: { type: Number, default: 0 },    // Added rating
+  // reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }], // Added reviews array (assuming Review is another model)
+  // seller: { type: mongoose.Schema.Types.ObjectId, ref: 'Seller' },   // Assuming Seller is another model
+  // sellerid: { type: String },              // Added sellerid
+  // productid: { type: String },             // Added productid
+  bgcolor: { type: String },               // Added bgcolor
+  panelcolor: { type: String },            // Added panelcolor
+  textcolor: { type: String }              // Added textcolor
 });
 
 // Create and export the user model

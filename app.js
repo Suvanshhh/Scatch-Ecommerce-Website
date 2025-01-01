@@ -2,9 +2,15 @@ const express = require("express");
 const app = express();
 const db = require("./config/mongoose-connection");
 const cookieParser = require("cookie-parser");
+const expressSession = require("express-session");
+const flash = require("connect-flash");
+
 const ownersRouter = require("./routes/ownersRouter");
 const usersRouter = require("./routes/usersRouter");
 const productsRouter = require("./routes/productsRouter");
+const indexRouter = require("./routes/index");
+
+require("dotenv").config();
 
 // Set the view engine to EJS
 app.set("view engine", "ejs");
@@ -13,13 +19,23 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+    expressSession({
+        secret: process.env.EXPRESS_SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+})
+);
 
-// // Route to render the home page
+app.use(flash());
+
+
+// Route to render the home page
 // app.get("/", (req, res) => {
-//     console.log("Hello");
-//     res.send("Hey");
+//     res.render("shop");
 // });
 
+app.use("/", indexRouter);
 app.use("/owners", ownersRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
