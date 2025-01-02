@@ -39,6 +39,7 @@ app.use("/", indexRouter);
 app.use("/owners", ownersRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
+// app.use("/shop");
 
 
 // Handle 404 - Route not found

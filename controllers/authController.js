@@ -45,26 +45,33 @@ module.exports.registerUser = async function (req, res) {
 };
 
 module.exports.loginUser = async function (req, res) {
-  let { email, password } = req.body;
+  try {
+      const { email, password } = req.body;
 
-  let user = await userModel.findOne({ email: email });
-  if (!user) {
-    req.flash("error", "Email or password incorrect");
-        return res.redirect("/");
-        }
-  
+      // Check if the user exists
+      const user = await userModel.findOne({ email });
+      if (!user) {
+          req.flash("error", "Email or password incorrect");
+          return res.redirect("/"); // Redirect to login page
+      }
 
-  bcrypt.compare(password, user.password, function(err, result){
-    if (result){
-        let token = generateToken(user);
-        res.cookie("token", token);
-        res.render("shop");
-    }
-    else{
-        req.flash("error", "Email or password incorrect");
-        return res.redirect("/");
-    }
-  })
+      // Compare the provided password with the hashed password
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+          req.flash("error", "Email or password incorrect");
+          return res.redirect("/"); // Redirect to login page
+      }
+
+      // Generate a token and set a cookie
+      const token = generateToken(user);
+      res.cookie("token", token);
+
+      req.flash("success", "Login successful!");
+      return res.redirect("/shop"); // Redirect to the /shop route after login
+  } catch (err) {
+      console.error(err);
+      res.status(500).send("Error logging in: " + err.message);
+  }
 };
 
 module.exports.logout = function(req,res){
