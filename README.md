@@ -3,6 +3,8 @@
 
 Scatch is a full-stack ecommerce website built with Node.js, Express, MongoDB, and EJS for the frontend. It allows users to browse and purchase products, and it includes an admin panel for managing products. It also supports user authentication and flash messages for status updates.
 
+
+<p align="center"><img src="https://i.postimg.cc/nzg3gkL2/index-route.png" alt="project-image"></p>
 ## Features
 
 - **Product Management**: Admins can create, view, and manage products with details like price, discount, and images.
