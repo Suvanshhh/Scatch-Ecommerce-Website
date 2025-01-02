@@ -55,17 +55,8 @@ Scatch is a full-stack ecommerce website built with Node.js, Express, MongoDB, a
 
    The server will start at `http://localhost:3000`.
 
-## Usage
+## Project Screenshots
 
-- Visit the homepage to browse products.
-- Admins can log in to manage products.
-- Use the cart to check out and complete purchases.
-
-## Routes
-
-- `/shop`: Displays the product listing page.
-- `/owners/admin`: Admin dashboard to manage products.
-- `/products/create`: Form to create a new product (only accessible to admins).
 
 ## Contributing
 
