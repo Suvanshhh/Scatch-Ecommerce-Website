@@ -13,7 +13,7 @@
         </div>
         <div class="flex flex-col mt-20">
             <a class="block w-fit mb-2" href="">New Collection</a>
-            <a class="block w-fit mb-2" href="">All Products</a>
+            <a class="block w-fit mb-2" href="/owners/admin">Add Products(only Owners)</a>
             <a class="block w-fit mb-2" href="">Discounted Products</a>
         </div>
         <div class="mt-32">
@@ -36,7 +36,7 @@
                                 <img class="w-full h-56 object-cover" src="default-image.jpg" alt="No Image Available">
                             <% } %>
                             <div class="absolute top-4 right-4">
-                                <a class="bg-white p-2 rounded-full shadow-md hover:bg-gray-200">
+                                <a class="bg-white p-2 rounded-full shadow-md hover:bg-gray-200" href="/addtocart/<%= product.id %>">
                                     <i class="ri-add-line text-xl text-gray-700"></i>
                                 </a>
                             </div>
